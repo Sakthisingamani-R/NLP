@@ -1,0 +1,17 @@
+import re
+from nltk.stem import PorterStemmer
+
+text = "Natural Language Processing is an interesting field of Artificial Intelligence!"
+text = text.lower()
+tokens = re.findall(r'\b[a-z]+\b', text)
+stop_words = {
+    'is', 'an', 'the', 'of', 'and', 'to', 'in', 'a'
+}
+
+tokens = [word for word in tokens if word not in stop_words]
+
+stemmer = PorterStemmer()
+stemmed_words = [stemmer.stem(word) for word in tokens]
+
+print("Tokens:", tokens)
+print("Stemmed Words:", stemmed_words)
