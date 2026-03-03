@@ -1,0 +1,23 @@
+from collections import defaultdict
+text = "I love NLP and I love Python"
+words = text.lower().split()
+bigram_counts = defaultdict(int)
+unigram_counts = defaultdict(int)
+vocab = set(words)
+for i in range(len(words) - 1):
+    unigram_counts[words[i]] += 1
+    bigram = (words[i], words[i+1])
+    bigram_counts[bigram] += 1
+
+V = len(vocab)
+
+def bigram_probability(w1, w2):
+    bigram_count = bigram_counts[(w1, w2)]
+    unigram_count = unigram_counts[w1]
+    return (bigram_count + 1) / (unigram_count + V)
+
+w1 = "love"
+w2 = "python"
+
+prob = bigram_probability(w1, w2)
+print(f"P({w2} | {w1}) =", round(prob,4))
