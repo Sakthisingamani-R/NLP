@@ -1,0 +1,13 @@
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger_eng')
+
+sentence = "Natural language processing is very interesting"
+words = word_tokenize(sentence)
+tagged_words = pos_tag(words)
+
+for word, tag in tagged_words:
+    print(word, "->", tag)
