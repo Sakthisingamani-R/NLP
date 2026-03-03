@@ -1,0 +1,17 @@
+sentence = "Natural language processing is very interesting"
+
+words = sentence.split()
+
+for word in words:
+    if word.lower() in ["is", "am", "are", "was", "were"]:
+        tag = "VERB"
+    elif word.lower() in ["very"]:
+        tag = "ADVERB"
+    elif word.endswith("ing"):
+        tag = "VERB"
+    elif word[0].isupper():
+        tag = "NOUN"
+    else:
+        tag = "NOUN"
+
+    print(word, "->", tag)
